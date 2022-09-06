@@ -1,0 +1,15 @@
+C:\Users\Motsa\diprojects\newgreeting\greetingsapp\bin\Debug\net6.0\greetingsapp.exe
+C:\Users\Motsa\diprojects\newgreeting\greetingsapp\bin\Debug\net6.0\greetingsapp.deps.json
+C:\Users\Motsa\diprojects\newgreeting\greetingsapp\bin\Debug\net6.0\greetingsapp.runtimeconfig.json
+C:\Users\Motsa\diprojects\newgreeting\greetingsapp\bin\Debug\net6.0\greetingsapp.dll
+C:\Users\Motsa\diprojects\newgreeting\greetingsapp\bin\Debug\net6.0\greetingsapp.pdb
+C:\Users\Motsa\diprojects\newgreeting\greetingsapp\obj\Debug\net6.0\greetingsapp.csproj.AssemblyReference.cache
+C:\Users\Motsa\diprojects\newgreeting\greetingsapp\obj\Debug\net6.0\greetingsapp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Motsa\diprojects\newgreeting\greetingsapp\obj\Debug\net6.0\greetingsapp.AssemblyInfoInputs.cache
+C:\Users\Motsa\diprojects\newgreeting\greetingsapp\obj\Debug\net6.0\greetingsapp.AssemblyInfo.cs
+C:\Users\Motsa\diprojects\newgreeting\greetingsapp\obj\Debug\net6.0\greetingsapp.csproj.CoreCompileInputs.cache
+C:\Users\Motsa\diprojects\newgreeting\greetingsapp\obj\Debug\net6.0\greetingsapp.dll
+C:\Users\Motsa\diprojects\newgreeting\greetingsapp\obj\Debug\net6.0\refint\greetingsapp.dll
+C:\Users\Motsa\diprojects\newgreeting\greetingsapp\obj\Debug\net6.0\greetingsapp.pdb
+C:\Users\Motsa\diprojects\newgreeting\greetingsapp\obj\Debug\net6.0\greetingsapp.genruntimeconfig.cache
+C:\Users\Motsa\diprojects\newgreeting\greetingsapp\obj\Debug\net6.0\ref\greetingsapp.dll

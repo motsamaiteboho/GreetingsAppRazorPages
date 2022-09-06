@@ -1,0 +1,26 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Greetings App</h1>
+    <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="All"></div>
+            <div class="mb-3 row">
+                <div  class="col-2">
+                <label class="form-label">Enter command > 
+                </label>
+                </div>
+                <div class="col-10">
+                <input type="text" asp-for="Command.usercommand" placeholder="enter  command or enter 'help' for all valid commands" class="form-control" />
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success float-right">Execute Command</button>
+    </form>
+
+    <diV class="mt-4">
+        <p class="text-lead text-warning display-4">@Model.greeting</p>
+    </diV>
+</div>
