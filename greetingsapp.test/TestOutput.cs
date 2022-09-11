@@ -2,62 +2,70 @@ namespace greetingsapp.test;
 
 public class TestOutput
 {
+
     [Fact]
-    public void ShoudReturnTheGreetingInSpecifiedLang()
+    public void ShoudBeAbleToAddUser()
     {
-        string[] command = "greet teboho english".Split(' ');
-        Assert.Equal("Hello, teboho",Output.Greet(command));
+        List<UserModel> users = new List<UserModel>();
+        IOutput output = new Output(users);
+        UserModel user = new UserModel(){ Id = 1, Name="teboho", Count= 1, Language ="english"};
+        output.Add(user);
+        Assert.Equal(1,output.GetUsers().Count());
     }
 
     [Fact]
-    public void ShoudGreetInEnglishIfLangIsUnspecified()
+    public void ShoudBeAbleToUpdateCounterUser()
     {
-        string[] command = "greet teboho".Split(' ');
-        Assert.Equal("Hello, teboho",Output.Greet(command));
+        List<UserModel> users = new List<UserModel>();
+        IOutput output = new Output(users);
+        UserModel user = new UserModel(){ Id = 1, Name="teboho", Count= 1, Language ="english"};
+        output.Add(user);
+        output.Update(user);
+        var updated = output.GetUser(user.Name);
+        Assert.Equal(2,updated.Count);
     }
 
     [Fact]
-    public void ShoudReturnUnsupportedLangReposonse()
+    public void ShoudBeAbleRemoveUser()
     {
-        string[] command = "greet teboho xhosa".Split(' ');
-        Assert.Equal("Hello, teboho. xhosa laguage is curretly not supported",Output.Greet(command));
+        List<UserModel> users = new List<UserModel>();
+        IOutput output = new Output(users);
+        UserModel user = new UserModel(){ Id = 1, Name="teboho", Count= 1, Language ="english"};
+        output.Add(user);
+        output.Remove(user.Name);
+        Assert.Equal(0,output.GetUsers().Count());
     }
     [Fact]
-    public void ShoudErroMessageIfUnspecifiedArguments()
+    public void ShoudBeAbleClear()
     {
-        string[] command = "greet".Split(' ');
-        Assert.Equal("please specify the name and language, enter 'help' to check all valid commands",Output.Greet(command));
+        List<UserModel> users = new List<UserModel>();
+        IOutput output = new Output(users);
+        UserModel user = new UserModel(){ Id = 1, Name="teboho", Count= 1, Language ="english"};
+        output.Add(user);
+        output.Clear();
+        Assert.Equal(0,output.GetUsers().Count());
     }
 
     [Fact]
     public void ShoudReturnListofGreetedUsers()
     {
-        string[] command1 = "greet teboho english".Split(' ');
-        Output.Greet(command1);
-        string[] command2 = "greeted".Split(' ');
-        Assert.Equal("teboho : 1 \n",Output.Greeted(command2));
+        List<UserModel> users = new List<UserModel>();
+        IOutput output = new Output(users);
+        UserModel user = new UserModel(){ Id = 1, Name="teboho", Count= 1, Language ="english"};
+        UserModel user1 = new UserModel(){ Id = 2, Name="thabo", Count= 1, Language ="afrikaans"};
+        output.Add(user);
+        output.Add(user1);
+        Assert.Equal(2,output.GetUsers().Count());
     }
+    
+    [Fact]
     public void ShoudReturnGreetedCountOfSpecifiedUser()
     {
-        string[] command2 = "greeted thabo".Split(' ');
-        Assert.Equal("teboho has been greeted 2 times",Output.Greeted(command2));
-    }
-    public void ShoudReturnCountofUniqueUsers()
-    {
-        Assert.Equal("The number of users is 1",Output.Count());
-    }
-
-    public void ShouldClearTheListOfUsers()
-    {
-         string[] command = "clear".Split(' ');
-        Assert.Equal("users has been cleared",Output.Clear(command));
-    }
-    public void ShouldDeleteTheSpecifiedUserUsers()
-    {
-      
-        string[] command1 = "greet teboho english".Split(' ');
-        Output.Greet(command1);
-        string[] command = "clear teboho".Split(' ');
-        Assert.Equal("teboho has been cleared",Output.Clear(command));
+        List<UserModel> users = new List<UserModel>();
+        IOutput output = new Output(users);
+        UserModel user = new UserModel(){ Id = 1, Name="teboho", Count= 1, Language ="english"};
+        output.Add(user);
+        var existuser = output.GetUser(user.Name);
+        Assert.Equal(user,existuser);
     }
 }
