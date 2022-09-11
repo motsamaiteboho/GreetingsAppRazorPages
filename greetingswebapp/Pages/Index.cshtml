@@ -6,33 +6,39 @@
 
 
 <div class="text-center">
-    <h1 class="display-4 text-info">Welcome to Greetings App</h1>
-
+    <h1 class="display-4 text-primary text-uppercase">Welcome to Greetings App</h1>
+    <div>
+        <img src="images/greeting1.jpg" class="img-fluid" style="width:405px;height:124px"/>
+    </div>
     <div class="mt-4">
-        <a asp-page="/Greeting/New" class="btn btn-Info text-bold bg-info" role="button">Greet User</a>
+        <a asp-page="/Greeting/New" class="btn btn-Info text-white bg-primary" role="button">Greet User</a>
     </div>
 
     <diV class="mt-5 ">
 
         @if (Model.Commands.Count() == 0)
         {
-            <p class="display-6 ">No greeted users to display</p>
-
+            <p class="display-6 ">No greeted users</p>
         }
         else
         {
-            <table class="table table-dark table-striped-columns">
-                <thead>
-                    <th>Username</th>
-                     <th>Last Greeted Language</th>
-                    <th>Count</th>
-                    <th></th>
+            <table class="table">
+                <thead class="text-primary">
+                    <th scope="col">#</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Last Greeted Language</th>
+                    <th scope="col">Count</th>
+                    <th scope="col"></th>
                 </thead>
-                <tbody>
+                <tbody class="table-group-divider">
                     @foreach (var item in Model.Commands)
                     {
                         <tr>
-                            <td>@item.Name</td>
+                            <td> <img src="
+                            images/user.png" class="img-fluid me-2" style="width:20px;height:20px"/>
+                            </td>
+                            <td class="text-capitalize">
+                            @item.Name</td>
                             <td>@item.Language</td>
                             <td>@item.Count</td>
                            
@@ -46,7 +52,7 @@
                 </tbody>
                 <tfooter>
                     <tr>
-                        <td colspan="3">
+                        <td colspan="4">
                             <p class="text text-primary h4">unique users: @Model.Commands.Count()</p>
                         </td>
                         <td>

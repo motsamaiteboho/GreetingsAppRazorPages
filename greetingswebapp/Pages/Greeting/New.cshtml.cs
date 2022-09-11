@@ -20,6 +20,7 @@ public class NewModel : PageModel
     [BindProperty]
     public string? GreetingMessage { get; set; }
 
+    public string? Name { get; set; }
     public string[] Languages = new[] { "English", "Afrikaans", "Sesotho" };
 
     public void OnGet()
@@ -34,7 +35,10 @@ public class NewModel : PageModel
                 foreach (var lang in Languages)
                 {
                     if (lang.Key == Command.Language)
+                    {
                         GreetingMessage += $"{lang.Value}, {Command.Name}";
+                        Name = Command.Name;
+                    }
                 }
             }
         }
@@ -58,7 +62,6 @@ public class NewModel : PageModel
         //         _context.SaveChanges();
         //     }
         // }
-
         var user = output.GetUser(Command.Name.ToLower());
         if (ModelState.IsValid)
         {
