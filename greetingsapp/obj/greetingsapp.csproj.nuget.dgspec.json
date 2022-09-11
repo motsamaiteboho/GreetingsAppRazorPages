@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Motsa\\diprojects\\newgreeting\\greetingsapp\\greetingsapp.csproj": {}
+    "C:\\Users\\Motsa\\diprojects\\greetingsRazorPages\\greetingsapp\\greetingsapp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Motsa\\diprojects\\newgreeting\\greetingsapp\\greetingsapp.csproj": {
+    "C:\\Users\\Motsa\\diprojects\\greetingsRazorPages\\greetingsapp\\greetingsapp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Motsa\\diprojects\\newgreeting\\greetingsapp\\greetingsapp.csproj",
+        "projectUniqueName": "C:\\Users\\Motsa\\diprojects\\greetingsRazorPages\\greetingsapp\\greetingsapp.csproj",
         "projectName": "greetingsapp",
-        "projectPath": "C:\\Users\\Motsa\\diprojects\\newgreeting\\greetingsapp\\greetingsapp.csproj",
+        "projectPath": "C:\\Users\\Motsa\\diprojects\\greetingsRazorPages\\greetingsapp\\greetingsapp.csproj",
         "packagesPath": "C:\\Users\\Motsa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Motsa\\diprojects\\newgreeting\\greetingsapp\\obj\\",
+        "outputPath": "C:\\Users\\Motsa\\diprojects\\greetingsRazorPages\\greetingsapp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Motsa\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +39,20 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.Data.Sqlite": {
+              "target": "Package",
+              "version": "[6.0.8, )"
+            },
+            "dapper": {
+              "target": "Package",
+              "version": "[2.0.123, )"
+            },
+            "microsoft.entityframeworkcore.sqlite": {
+              "target": "Package",
+              "version": "[6.0.8, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

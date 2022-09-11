@@ -4,23 +4,60 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Greetings App</h1>
-    <form method="post" enctype="multipart/form-data">
-            <div asp-validation-summary="All"></div>
-            <div class="mb-3 row">
-                <div  class="col-2">
-                <label class="form-label">Enter command > 
-                </label>
-                </div>
-                <div class="col-10">
-                <input type="text" asp-for="Command.usercommand" placeholder="enter  command or enter 'help' for all valid commands" class="form-control" />
-                </div>
-            </div>
-            <button type="submit" class="btn btn-success float-right">Execute Command</button>
-    </form>
 
-    <diV class="mt-4">
-        <p class="text-lead text-warning display-4">@Model.greeting</p>
+<div class="text-center">
+    <h1 class="display-4 text-info">Welcome to Greetings App</h1>
+
+    <div class="mt-4">
+        <a asp-page="/Greeting/New" class="btn btn-Info text-bold bg-info" role="button">Greet User</a>
+    </div>
+
+    <diV class="mt-5 ">
+
+        @if (Model.Commands.Count() == 0)
+        {
+            <p class="display-6 ">No greeted users to display</p>
+
+        }
+        else
+        {
+            <table class="table table-dark table-striped-columns">
+                <thead>
+                    <th>Username</th>
+                     <th>Last Greeted Language</th>
+                    <th>Count</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Commands)
+                    {
+                        <tr>
+                            <td>@item.Name</td>
+                            <td>@item.Language</td>
+                            <td>@item.Count</td>
+                           
+                            <td>
+                                <form asp-page-handler="delete" asp-route-name="@item.Name" method="post">
+                                    <button class="btn btn-danger">x</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                <tfooter>
+                    <tr>
+                        <td colspan="3">
+                            <p class="text text-warning">unique users: @Model.Commands.Count()</p>
+                        </td>
+                        <td>
+                            <form asp-page-handler="clear" method="post">
+                                <button class="btn btn-danger">Clear All</button>
+                            </form>
+                        </td>
+
+                    </tr>
+                </tfooter>
+            </table>
+        }
     </diV>
 </div>

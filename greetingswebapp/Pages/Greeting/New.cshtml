@@ -1,0 +1,43 @@
+@page
+@model NewModel
+@{
+
+}
+<div class="text-center">
+    <h1 class="display-5"> Greet User</h1>
+    <form method="post" enctype="multipart/form-data">
+        @* <div asp-validation-summary="All" class="text text-danger"></div> *@
+        <div class="mb-3 form-group d-flex align-items-center justify-content-center">
+            <div class="me-4">
+                <label class="form-label" asp-for="Command.Name">Name</label>
+            </div>
+            <input type="text" asp-for="Command.Name" placeholder="enter your name" class="form-control" />
+            <span asp-validation-for="Command.Name" class="text text-danger"></span>
+        </div>
+
+        <div class="row mt-5">
+            @foreach (var language in Model.Languages)
+            {
+                <div class="col-4 form-group">
+                    @* <input type="radio" asp-for="Command.Language" value="@language" />@language<br /> *@
+                    @Html.RadioButtonFor(model => model.Command.Language,language) @language<br />
+                </div>
+            }
+            <span asp-validation-for="Command.Language" class="text text-danger"></span>
+        </div>
+        <div class="d-flex mt-5 justify-content-center">
+            <div>
+                <button type="submit" class="btn btn-success float-right">Greet Me</button>
+            </div>
+        </div>
+    </form>
+
+    <div class="mt-4 border border-info">
+        <p class="text-lead text-info display-4">@Model.GreetingMessage</p>
+        <div class="m-2">
+            <a asp-page="/Index" class="btn btn-Info text-bold bg-info" role="button">Go to List</a>
+        </div>
+    </div>
+
+
+</div>

@@ -1,49 +1,27 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using greetingswebapp.Models;
 
 namespace greetingswebapp.Pages;
 
 public class IndexModel : PageModel
 {
-    private readonly ILogger<IndexModel> _logger;
-    private IOutput _output;
-    public IndexModel(ILogger<IndexModel> logger, IOutput output)
+    private readonly IOutput output;
+    private readonly CommandDbContext _context;
+    public IndexModel(CommandDbContext context, IOutput output)
     {
-        _logger = logger;
-        _output = output;
+        _context = context;
+        this.output = output;
     }
-    [BindProperty(SupportsGet = true)]
-    public CommandModel Command { get; set; }
-    public string? greeting { get; set; }
+   
+    //public IEnumerable<CommandModel> Commands {get;set;} = Enumerable.Empty<CommandModel>();
+    public IEnumerable<UserModel> Commands {get;set;} = Enumerable.Empty<UserModel>();
     public void OnGet()
     {
-        if (!string.IsNullOrEmpty(Command.usercommand))
-        {
-            string[] command = Command.usercommand.Split(' ');
-            string cmdtype = command[0].ToLower();
-            switch (cmdtype)
-            {
-                case "greet":
-                    greeting = _output.Greet(command);
-                    break;
-                case "greeted":
-                    greeting = _output.Greeted(command);
-                    break;
-                case "counter":
-                    greeting = _output.Count();
-                    break;
-                case "clear":
-                    greeting = _output.Clear(command);
-                    break;
-                case "help":
-                    greeting = _output.Help();
-                    break;
-                default:
-                    greeting = "Invalid command. please, enter 'help' to check all valid commands";
-                    break;
-            }
-        }
+        // Commands =  _context.Commands
+        //                         .OrderBy(o => o.Name).ToList();
 
+        Commands = output.GetUsers().ToList();
     }
 
     public IActionResult OnPost()
@@ -52,6 +30,31 @@ public class IndexModel : PageModel
         {
             return Page();
         }
-        return RedirectToPage("/Index", new { Command.usercommand });
+        return RedirectToPage("/Index");
+    }
+    
+    public IActionResult OnPostDelete(string Name)
+    {
+        // var user = _context.Commands.FirstOrDefault(o => o.Id == id);
+
+        // if(user != null)
+        // {
+        //     _context.Commands.Remove(user);
+        //     _context.SaveChanges();
+        // }
+         var user = output.GetUser(Name);
+         if(user != null)
+        {
+            output.Remove(user.Name);
+        } 
+         return RedirectToPage("/Index");
+    }
+     public IActionResult OnPostClear()
+    {
+      
+        // _context.Commands.RemoveRange(_context.Commands);
+        //  _context.SaveChanges();
+        output.Clear();
+        return RedirectToPage("/Index");
     }
 }

@@ -1,9 +1,10 @@
 public interface IOutput
 {
-    string Greet(string[] command);
-    string Greeted(string[] command);
-    string  Count();
-    string  Clear(string[] command);
-    string Help();
-
+    IEnumerable<UserModel> GetUsers();
+    UserModel GetUser(string Name);
+    void Add(UserModel user);
+    void Update(UserModel user);
+    void  Remove(string Name);
+    void Clear();
+    void  Help();
 }
