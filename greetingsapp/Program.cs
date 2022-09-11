@@ -95,7 +95,7 @@ static void Clear(string[]  command, IOutput output)
         string Name = command[1].ToLower();
         var user = output.GetUser(Name);
         if(user != null){
-            output.Remove(user.Name);
+            output.Remove(user);
         }
         else{
             Console.WriteLine($"{Name} hasn't been greeted");

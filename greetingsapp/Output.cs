@@ -27,9 +27,9 @@ public class Output:IOutput
             existinguser.Count = existinguser.Count + 1;
         }
     }
-    public void Remove(string Name)
+    public void Remove(UserModel user)
     {
-        var existinguser = users.FirstOrDefault(o => o.Name == Name);
+        var existinguser = users.FirstOrDefault(o => o.Name == user.Name);
         if (existinguser != null)
         {
             users.Remove(existinguser);

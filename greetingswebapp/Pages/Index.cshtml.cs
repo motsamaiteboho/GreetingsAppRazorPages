@@ -45,7 +45,7 @@ public class IndexModel : PageModel
          var user = output.GetUser(Name);
          if(user != null)
         {
-            output.Remove(user.Name);
+            output.Remove(user);
         } 
          return RedirectToPage("/Index");
     }

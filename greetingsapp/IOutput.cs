@@ -4,7 +4,7 @@ public interface IOutput
     UserModel GetUser(string Name);
     void Add(UserModel user);
     void Update(UserModel user);
-    void  Remove(string Name);
+    void  Remove(UserModel Name);
     void Clear();
     void  Help();
 }
