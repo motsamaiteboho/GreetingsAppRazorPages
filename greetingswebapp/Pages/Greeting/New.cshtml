@@ -4,9 +4,21 @@
 
 }
 <div class="text-center">
+    <form method="post" enctype="multipart/form-data">
     <div>
-        <img src="../images/user.png" class="img-fluid ms-4" style="width:110px;height:110px"/>
+        @if (!String.IsNullOrEmpty(@Model.ProfilePic))
+        {
+            <img class="img-fluid ms-4" src="../images/users/@Model.ProfilePic" style="width:110px;height:110px"/>
+        }
+        else
+        {
+            <img src="../images/users/user.png" class="img-fluid ms-4" style="width:110px;height:110px"/>
+            <div class="d-flex justify-content-center">
+                <input type="file" asp-for="Command.Upload" class="form-control" style="width:240px"/>
+            </div>
+        }
     </div>
+   
     @if(!string.IsNullOrEmpty(@Model.Name))
     {
         <h1 class="display-6 text-primary text-capitalize"> @Model.Name</h1>
@@ -16,7 +28,7 @@
          <h1 class="display-6 text-primary"> Greet User</h1>
     }
    
-    <form method="post" enctype="multipart/form-data">
+   
         @* <div asp-validation-summary="All" class="text text-danger"></div> *@
         <div class="mb-3 form-group d-flex align-items-center justify-content-center">
             <div class="me-4">
@@ -30,8 +42,15 @@
             @foreach (var language in Model.Languages)
             {
                 <div class="col-4 form-group">
-                    @* <input type="radio" asp-for="Command.Language" value="@language" />@language<br /> *@
-                    @Html.RadioButtonFor(model => model.Command.Language,language) @language<br />
+                    @if(language == "English")
+                    {
+                        <input type="radio" asp-for="Command.Language" value="@language" checked/>@language<br />
+                    }
+                    else
+                    {
+                        <input type="radio" asp-for="Command.Language" value="@language"/>@language<br />
+                    }
+                    @* @Html.RadioButtonFor(model => model.Command.Language,language) @language<br /> *@
                 </div>
             }
             <span asp-validation-for="Command.Language" class="text text-danger"></span>

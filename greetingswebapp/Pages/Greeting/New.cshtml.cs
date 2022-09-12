@@ -7,10 +7,12 @@ public class NewModel : PageModel
 {
     private readonly CommandDbContext _context;
     private readonly IOutput output;
-    public NewModel(CommandDbContext context, IOutput output)
+    private IWebHostEnvironment _environment;
+    public NewModel(CommandDbContext context, IOutput output,IWebHostEnvironment environment)
     {
         _context = context;
         this.output = output;
+        _environment = environment;
     }
 
     [BindProperty(SupportsGet = true), Required]
@@ -21,6 +23,7 @@ public class NewModel : PageModel
     public string? GreetingMessage { get; set; }
 
     public string? Name { get; set; }
+    public string? ProfilePic { get; set; }
     public string[] Languages = new[] { "English", "Afrikaans", "Sesotho" };
 
     public void OnGet()
@@ -38,6 +41,7 @@ public class NewModel : PageModel
                     {
                         GreetingMessage += $"{lang.Value}, {Command.Name}";
                         Name = Command.Name;
+                        ProfilePic = Command.ImageFile; 
                     }
                 }
             }
@@ -62,24 +66,40 @@ public class NewModel : PageModel
         //         _context.SaveChanges();
         //     }
         // }
-        var user = output.GetUser(Command.Name.ToLower());
-        if (ModelState.IsValid)
-        {
+            var user = output.GetUser(Command.Name.ToLower());
             if (user != null)
             {
+                user.ImageFile = Command.Upload is not null? Command.Upload.FileName: user.ImageFile;
                 user.Language = Command.Language;
                 output.Update(user);
+                if(Command.Upload != null)
+                {
+                     var file = Path.Combine(_environment.ContentRootPath, "wwwroot/images/users", Command.Upload.FileName);
+                    using (var fileStream = new FileStream(file, FileMode.Create))
+                    {
+                         Command.Upload.CopyToAsync(fileStream);
+                    }
+                }
             }
             else
             {
-
                 Command.Count = 1;
+                Command.ImageFile = Command.Upload is not null? Command.Upload.FileName : "user.png";
                 Command.Name = Command.Name.ToLower();
                 output.Add(Command);
+                
+                if(Command.Upload != null)
+                {
+                     var file = Path.Combine(_environment.ContentRootPath, "wwwroot/images/users", Command.Upload.FileName);
+                    using (var fileStream = new FileStream(file, FileMode.Create))
+                    {
+                         Command.Upload.CopyToAsync(fileStream);
+                    }
+                }
+               
 
             }
-        }
-        return RedirectToPage(new { Command.Language, Command.Name });
+        return RedirectToPage(new { Command.Language, Command.Name, Command.ImageFile});
     }
 
 }

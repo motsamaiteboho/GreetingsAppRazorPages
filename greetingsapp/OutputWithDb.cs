@@ -14,7 +14,8 @@ public class OutputWithDb : IOutput
 	            Id integer primary key AUTOINCREMENT,
 	            Name text,
 	            Count integer,
-	            Language text
+	            Language text,
+                ImageFile text
             );";
             connection.Execute(CREATE_USER_TABLE);
         }
@@ -44,13 +45,14 @@ public class OutputWithDb : IOutput
     {
         using (var connection = new SqliteConnection(_connectionString))
         {
-            var sql = @" insert into  user (Name, Count, Language)
-	                    values (@Name, @Count, @Language);";
+            var sql = @" insert into  user (Name, Count, Language, ImageFile)
+	                    values (@Name, @Count, @Language, @ImageFile);";
             var parameters = new UserModel()
             {
                 Name = user.Name,
                 Count = user.Count,
-                Language = user.Language
+                Language = user.Language,
+                ImageFile = user.ImageFile
             };
 
             connection.Execute(sql, parameters);
@@ -61,10 +63,10 @@ public class OutputWithDb : IOutput
     {
         using (var connection = new SqliteConnection(_connectionString))
         {
-            var template = new UserModel { Name = user.Name, Count = user.Count + 1, Language = user.Language };
+            var template = new UserModel { Name = user.Name, Count = user.Count + 1, Language = user.Language, ImageFile = user.ImageFile };
             var parameters = new DynamicParameters(template);
             var sql = @" update user
-	                     set Count= @Count, Language = @Language
+	                     set Count= @Count, Language = @Language, ImageFile = @ImageFile
                          where Name = @Name;";
             connection.Execute(sql, parameters);
         }

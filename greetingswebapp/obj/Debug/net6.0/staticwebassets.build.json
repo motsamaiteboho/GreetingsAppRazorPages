@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "nMYOatITh0zTEI48Ez6UQioyfOUBfCmkHW3E8dUEHvs=",
+  "Hash": "9nuAyz0qs7qMj19Np7bUtN2om6kxhUm1KtqtxtJjsQs=",
   "Source": "greetingswebapp",
   "BasePath": "_content/greetingswebapp",
   "Mode": "Default",
@@ -136,12 +136,12 @@
       "OriginalItemSpec": "wwwroot\\images\\greeting1.jpg"
     },
     {
-      "Identity": "C:\\Users\\Motsa\\diprojects\\greetingsRazorPages\\greetingswebapp\\wwwroot\\images\\user.png",
+      "Identity": "C:\\Users\\Motsa\\diprojects\\greetingsRazorPages\\greetingswebapp\\wwwroot\\images\\users\\user.png",
       "SourceId": "greetingswebapp",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Motsa\\diprojects\\greetingsRazorPages\\greetingswebapp\\wwwroot\\",
       "BasePath": "_content/greetingswebapp",
-      "RelativePath": "images/user.png",
+      "RelativePath": "images/users/user.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -150,7 +150,41 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\user.png"
+      "OriginalItemSpec": "wwwroot\\images\\users\\user.png"
+    },
+    {
+      "Identity": "C:\\Users\\Motsa\\diprojects\\greetingsRazorPages\\greetingswebapp\\wwwroot\\images\\users\\user1.png",
+      "SourceId": "greetingswebapp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Motsa\\diprojects\\greetingsRazorPages\\greetingswebapp\\wwwroot\\",
+      "BasePath": "_content/greetingswebapp",
+      "RelativePath": "images/users/user1.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\users\\user1.png"
+    },
+    {
+      "Identity": "C:\\Users\\Motsa\\diprojects\\greetingsRazorPages\\greetingswebapp\\wwwroot\\images\\users\\user2.png",
+      "SourceId": "greetingswebapp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Motsa\\diprojects\\greetingsRazorPages\\greetingswebapp\\wwwroot\\",
+      "BasePath": "_content/greetingswebapp",
+      "RelativePath": "images/users/user2.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\users\\user2.png"
     },
     {
       "Identity": "C:\\Users\\Motsa\\diprojects\\greetingsRazorPages\\greetingswebapp\\wwwroot\\js\\site.js",

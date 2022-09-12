@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="dapper" Version="2.0.123" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
     <PackageReference Include="Microsoft.Data.Sqlite" Version="6.0.8" />
     <PackageReference Include="microsoft.entityframeworkcore.sqlite" Version="6.0.8" />
   </ItemGroup>
