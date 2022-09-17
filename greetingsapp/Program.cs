@@ -54,17 +54,7 @@ static void Greet(IOutput output, string[] command, List<UserModel> users)
     else
         output.Update(exituser);
 
-    Dictionary<string, string> Languages = new(){
-            {"english", "Hello"},  {"afrikaans", "Hallo"},  {"sesotho", "Dumelang"}
-            };
-
-    foreach (var lang in Languages)
-    {
-        if (lang.Key == user.Language)
-        {
-            Console.WriteLine($"{lang.Value}, {user.Name}");
-        }
-    }
+    Console.WriteLine(user.GreetingMessage);
 }
 static void Greeted(string[]  command, IOutput output)
 {

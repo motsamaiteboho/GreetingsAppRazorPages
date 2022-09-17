@@ -5,36 +5,40 @@
 }
 <div class="text-center">
     <form method="post" enctype="multipart/form-data">
-    <div>
-        @if (!String.IsNullOrEmpty(@Model.ProfilePic))
+        <div>
+            @if (!String.IsNullOrEmpty(@Model.Command.ProfilePic))
+            {
+                <img class="img-fluid ms-4" src="../images/users/@Model.Command!.ProfilePic"
+                style="width:110px;height:110px" />
+            }
+            else
+            {
+                <img src="../images/users/user.png" class="img-fluid ms-4" style="width:110px;height:110px" />
+                <div class="d-flex justify-content-center">
+                    <input type="file" asp-for="Command.Upload" class="form-control" style="width:240px" />
+                </div>
+            }
+        </div>
+
+        @if (!String.IsNullOrEmpty(Model.Command.Name))
         {
-            <img class="img-fluid ms-4" src="../images/users/@Model.ProfilePic" style="width:110px;height:110px"/>
+            <h1 class="display-6 text-primary text-capitalize">
+                    @Model.Command.GetName
+            </h1>
         }
         else
         {
-            <img src="../images/users/user.png" class="img-fluid ms-4" style="width:110px;height:110px"/>
-            <div class="d-flex justify-content-center">
-                <input type="file" asp-for="Command.Upload" class="form-control" style="width:240px"/>
-            </div>
+            <h1 class="display-6 text-primary"> Greet User</h1>
         }
-    </div>
-   
-    @if(!string.IsNullOrEmpty(@Model.Name))
-    {
-        <h1 class="display-6 text-primary text-capitalize"> @Model.Name</h1>
-    }
-    else
-    {
-         <h1 class="display-6 text-primary"> Greet User</h1>
-    }
-   
-   
+
         @* <div asp-validation-summary="All" class="text text-danger"></div> *@
         <div class="mb-3 form-group d-flex align-items-center justify-content-center">
             <div class="me-4">
                 <label class="form-label" asp-for="Command.Name">Name</label>
             </div>
             <input type="text" asp-for="Command.Name" placeholder="enter your name" class="form-control" />
+        </div>
+        <div>
             <span asp-validation-for="Command.Name" class="text text-danger"></span>
         </div>
 
@@ -42,13 +46,13 @@
             @foreach (var language in Model.Languages)
             {
                 <div class="col-4 form-group">
-                    @if(language == "English")
+                    @if (language == "English")
                     {
-                        <input type="radio" asp-for="Command.Language" value="@language" checked/>@language<br />
+                        <input type="radio" asp-for="Command.Language" value="@language" checked />@language<br />
                     }
                     else
                     {
-                        <input type="radio" asp-for="Command.Language" value="@language"/>@language<br />
+                        <input type="radio" asp-for="Command.Language" value="@language" />@language<br />
                     }
                     @* @Html.RadioButtonFor(model => model.Command.Language,language) @language<br /> *@
                 </div>
@@ -63,12 +67,14 @@
     </form>
 
     <div class="mt-4 border border-info">
-        @if(!string.IsNullOrEmpty(Model.GreetingMessage))
+        @if (!string.IsNullOrEmpty(Model.Command.GreetingMessage))
         {
             <div>
-                <p class="text-lead text-info display-4 me-4 text-capitalize">@Model.GreetingMessage<img src="../images/greet.png" class="img-fluid ms-4" style="width:55px;height:55px"/></p>
+                <p class="text-lead text-info display-4 me-4 text-capitalize">
+                    @Model.Command.GreetingMessage
+                    <img src="../images/greet.png" class="img-fluid ms-4" style="width:55px;height:55px" />
+                </p>
             </div>
-            
         }
         <div class="m-2">
             <a asp-page="/Index" class="btn btn-Info text-bold bg-info" role="button">Go to List</a>
