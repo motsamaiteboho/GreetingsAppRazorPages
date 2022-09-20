@@ -7,7 +7,7 @@ public class TestOutput
     public void ShoudBeAbleToAddUser()
     {
         List<UserModel> users = new List<UserModel>();
-        IOutput output = new Output(users);
+        IGreeting output = new Output(users);
         UserModel user = new UserModel(){ Id = 1, Name="teboho", Count= 1, Language ="english"};
         output.Add(user);
         Assert.Equal(1,output.GetUsers().Count());
@@ -17,7 +17,7 @@ public class TestOutput
     public void ShoudBeAbleToUpdateCounterUser()
     {
         List<UserModel> users = new List<UserModel>();
-        IOutput output = new Output(users);
+        IGreeting output = new Output(users);
         UserModel user = new UserModel(){ Id = 1, Name="teboho", Count= 1, Language ="english"};
         output.Add(user);
         output.Update(user);
@@ -29,7 +29,7 @@ public class TestOutput
     public void ShoudBeAbleRemoveUser()
     {
         List<UserModel> users = new List<UserModel>();
-        IOutput output = new Output(users);
+        IGreeting output = new Output(users);
         UserModel user = new UserModel(){ Id = 1, Name="teboho", Count= 1, Language ="english"};
         output.Add(user);
         output.Remove(user.Name);
@@ -39,7 +39,7 @@ public class TestOutput
     public void ShoudBeAbleClear()
     {
         List<UserModel> users = new List<UserModel>();
-        IOutput output = new Output(users);
+        IGreeting output = new Output(users);
         UserModel user = new UserModel(){ Id = 1, Name="teboho", Count= 1, Language ="english"};
         output.Add(user);
         output.Clear();
@@ -50,7 +50,7 @@ public class TestOutput
     public void ShoudReturnListofGreetedUsers()
     {
         List<UserModel> users = new List<UserModel>();
-        IOutput output = new Output(users);
+        IGreeting output = new Output(users);
         UserModel user = new UserModel(){ Id = 1, Name="teboho", Count= 1, Language ="english"};
         UserModel user1 = new UserModel(){ Id = 2, Name="thabo", Count= 1, Language ="afrikaans"};
         output.Add(user);
@@ -62,7 +62,7 @@ public class TestOutput
     public void ShoudReturnGreetedCountOfSpecifiedUser()
     {
         List<UserModel> users = new List<UserModel>();
-        IOutput output = new Output(users);
+        IGreeting output = new Output(users);
         UserModel user = new UserModel(){ Id = 1, Name="teboho", Count= 1, Language ="english"};
         output.Add(user);
         var existuser = output.GetUser(user.Name);

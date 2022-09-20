@@ -1,4 +1,4 @@
-public class Output:IOutput
+public class Output:IGreeting
 {
     private List<UserModel> users;
     public Output(List<UserModel> users)

@@ -1,7 +1,7 @@
 using Microsoft.Data.Sqlite;
 using Dapper;
 
-public class OutputWithDb : IOutput
+public class OutputWithDb : IGreeting
 {
     private string _connectionString;
     public OutputWithDb(string connectionString)

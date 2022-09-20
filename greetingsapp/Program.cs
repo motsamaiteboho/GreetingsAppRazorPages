@@ -6,8 +6,8 @@ string cmdtype = string.Empty;
 
 List<UserModel> users = new List<UserModel>();
 
-//IOutput output = new Output(users);
-IOutput output = new OutputWithDb("Data Source=./UsersDb.db");
+//IGreeting output = new Output(users);
+IGreeting output = new OutputWithDb("Data Source=./UsersDb.db");
 
 do
 {
@@ -41,7 +41,7 @@ do
 Console.WriteLine("Thank you for using our greetings app, press any key to exit...");
 Console.ReadKey();
 
-static void Greet(IOutput output, string[] command, List<UserModel> users)
+static void Greet(IGreeting output, string[] command, List<UserModel> users)
 {
     UserModel user = Input.GetUserModel();
 
@@ -56,7 +56,7 @@ static void Greet(IOutput output, string[] command, List<UserModel> users)
 
     Console.WriteLine(user.GreetingMessage);
 }
-static void Greeted(string[]  command, IOutput output)
+static void Greeted(string[]  command, IGreeting output)
 {
     if (command.Length == 2)
     {
@@ -78,7 +78,7 @@ static void Greeted(string[]  command, IOutput output)
     }
 }
 
-static void Clear(string[]  command, IOutput output)
+static void Clear(string[]  command, IGreeting output)
 {
     if(command.Length == 2)
     {

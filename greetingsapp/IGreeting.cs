@@ -1,4 +1,4 @@
-public interface IOutput
+public interface IGreeting
 {
     IEnumerable<UserModel> GetUsers();
     UserModel GetUser(string Name);
