@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
  builder.Services.AddDbContext<CommandDbContext>(o => o.UseSqlite("Data Source=UsersDb.db"));
- builder.Services.AddSingleton<IOutput>(new OutputWithDb("Data Source=UsersDb2.db"));
+ builder.Services.AddSingleton<IGreeting>(new OutputWithDb("Data Source=UsersDb2.db"));
 //builder.Services.AddSingleton<IOutput>(new Output(new List<UserModel>()));
 
 var app = builder.Build();
